@@ -1,3 +1,7 @@
+package service;
+
+import model.User;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -11,8 +15,12 @@ public class UserService {
         this.userInvalidLoginAttempt = userInvalidLoginAttempt;
     }
     public void regiterNewAdmin(){
+
         Scanner sc = new Scanner(System.in);
-        System.out.println("\nNew Admin User Registration");
+        System.out.println("\nNew Admin model.User Registration");
+
+        System.out.print("Enter Id: ");
+        int id = sc.nextInt();
 
         System.out.print("Enter first name: ");
         String firstName = sc.nextLine();
@@ -32,9 +40,9 @@ public class UserService {
         System.out.print("Enter password: ");
         String password = sc.nextLine();
         if(isUserExists(email)){
-            System.out.println("User Email :"+email+"already exists");
+            System.out.println("model.User Email :"+email+"already exists");
         }
-        User newuser = new User( firstName,lastName,mobileNumber,email,gender,password);
+        User newuser = new User(id,firstName,lastName,mobileNumber,email,gender,password);
         users.add(newuser);
         System.out.println("Registration Successful");
 
@@ -58,7 +66,7 @@ public class UserService {
             if(user.getEmail().equals(email)){
                 Integer existingCount = userInvalidLoginAttempt.getOrDefault(email,0);
                 if(existingCount>=5){
-                    System.out.println("User account is locked due to multiple invalid login attempts.");
+                    System.out.println("model.User account is locked due to multiple invalid login attempts.");
                     return null;
                 }
                 if(user.getPassword().equals(password)){
