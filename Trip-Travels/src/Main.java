@@ -26,7 +26,6 @@ public class Main {
             System.out.println("3. Plan journey");
             System.out.println("4. Reschedule booking date");
             System.out.println("5. Exit");
-
             System.out.print("Enter your choice: ");
             choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {

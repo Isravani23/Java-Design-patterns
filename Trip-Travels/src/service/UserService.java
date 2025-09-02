@@ -19,30 +19,35 @@ public class UserService {
         Scanner sc = new Scanner(System.in);
         System.out.println("\nNew Admin model.User Registration");
 
-        System.out.print("Enter Id: ");
+        System.out.print("\nEnter Id: ");
         int id = sc.nextInt();
 
-        System.out.print("Enter first name: ");
+        System.out.print("\nEnter first name: ");
         String firstName = sc.nextLine();
 
-        System.out.print("Enter last name: ");
+        System.out.print("\nEnter last name: ");
         String lastName = sc.nextLine();
 
-        System.out.print("Enter mobile number: ");
+        System.out.print("\nEnter mobile number: ");
         String mobileNumber = sc.nextLine();
 
-        System.out.print("Enter gender: ");
+        System.out.print("\nEnter gender: ");
         String gender = sc.nextLine();
 
-        System.out.print("Enter email: ");
+        System.out.print("\nEnter email: ");
         String email = sc.nextLine();
 
-        System.out.print("Enter password: ");
+        System.out.print("\nEnter password: ");
         String password = sc.nextLine();
         if(isUserExists(email)){
             System.out.println("model.User Email :"+email+"already exists");
         }
-        User newuser = new User(id,firstName,lastName,mobileNumber,email,gender,password);
+        User newuser = new User(id, firstName, lastName, mobileNumber, email, gender, password) {
+            @Override
+            public String getRole() {
+                return "Passenger";
+            }
+        };
         users.add(newuser);
         System.out.println("Registration Successful");
 

@@ -1,6 +1,6 @@
 package model;
 
-public class User {
+public abstract class User {
     private int id;
     private String firstName;
     private String lastName;
@@ -8,6 +8,8 @@ public class User {
     private String gender;
     private String email;
     private String password;
+
+    public abstract String getRole();
 
     public User(int id, String firstName, String lastName, String mobileNumber, String gender, String email, String password) {
         this.id=id;
