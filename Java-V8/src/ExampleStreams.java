@@ -1,10 +1,7 @@
-package com;
-
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Streams {
+public class ExampleStreams {
     /*Streams can be defined as a sequences of elements from a source
      which support data processing operations. You can treat streams as operations on data.
      java.util.stream.Stream interface is the center of Java 8 Streams API*/
@@ -26,5 +23,13 @@ public class Streams {
         //Sorting Operations
         List<String> naturalSort = names.stream().sorted().toList();
         System.out.println("Natural Sorting Order"+naturalSort);
+        List<String> compartor = names.stream().sorted((String s1,String s2)->s1.length()-s2.length()).toList();
+        System.out.println(compartor);
+
+        //Reduce Operations
+        //(min,max,count,collect)
+        int sum = Arrays.stream(new int[] {7, 5, 9, 2, 8, 1}).reduce(0, (a, b) -> a+b);
+        System.out.println(sum);
     }
+
 }
