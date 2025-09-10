@@ -19,22 +19,42 @@ public class ExampleCollectors {
       studentList.add(new Student("Harry", 20, "History", 71.9));
       //Top 3 performance
       List<Student> top = studentList.stream().sorted(Comparator.comparingDouble(Student::getPercentage).reversed()).limit(3).toList();
-      System.out.println("Top 3 performance "+top);
+      System.out.println("Top 3 performance " + top);
       Set<String> sub = studentList.stream().map(Student::getSubject).collect(Collectors.toSet());
-      System.out.println("Subjects "+sub);
-      Map<String,Double> map =  studentList.stream().collect(Collectors.toMap(Student::getName,Student::getPercentage));
-      System.out.println("Collecting "+map);
+      System.out.println("Subjects " + sub);
+      Map<String, Double> map = studentList.stream().collect(Collectors.toMap(Student::getName, Student::getPercentage));
+      System.out.println("Collecting " + map);
       DoubleSummaryStatistics studentStats = studentList.stream().collect(Collectors.summarizingDouble(Student::getPercentage));
-      System.out.println("Highest Percentage : "+studentStats.getMax());
-      System.out.println("Lowest Percentage : "+studentStats.getMin());
-      System.out.println("Average Percentage : "+studentStats.getAverage());
-      Map<String,List<Student>> group = studentList.stream().collect(Collectors.groupingBy(Student::getSubject));
-      System.out.println("Grouping "+group);
-      Map<Boolean,List<Student>> partition = studentList.stream().collect(Collectors.partitioningBy(s->s.getPercentage()>80.0));
-      System.out.println("High per---"+partition);
+      System.out.println("Highest Percentage : " + studentStats.getMax());
+      System.out.println("Lowest Percentage : " + studentStats.getMin());
+      System.out.println("Average Percentage : " + studentStats.getAverage());
+      Map<String, List<Student>> group = studentList.stream().collect(Collectors.groupingBy(Student::getSubject));
+      System.out.println("Grouping " + group);
+      Map<Boolean, List<Student>> partition = studentList.stream().collect(Collectors.partitioningBy(s -> s.getPercentage() > 80.0));
+      System.out.println("High per---" + partition);
       Map<String, Optional<Double>> high = studentList.stream().collect(Collectors
-              .groupingBy(Student::getName,Collectors.mapping(Student::getPercentage,Collectors.maxBy(Double::compare))));
+              .groupingBy(Student::getName, Collectors.mapping(Student::getPercentage, Collectors.maxBy(Double::compare))));
       System.out.println(high);
-      Map<String,Long> count = studentList.stream().collect(Collectors.groupingBy(Student::getSubject,Collectors.counting()));
-      System.out.println("Frequency----"+count);   }
+      //Most Frequent Element
+      Map<String,Long> count = studentList.stream().collect(Collectors
+              .groupingBy(Student::getSubject,Collectors.counting()));
+      System.out.println("Frequency----"+count);
+      Map.Entry<String,Long> maxCount = count.entrySet().stream()
+              .max(Map.Entry.comparingByValue()).get();
+      System.out.println("Most Frequent Element : "+maxCount.getKey());
+      System.out.println("Count : "+maxCount.getValue());
+
+      List<Integer> odd = studentList.stream().map(Student::getId).filter(i->(i%2!=0)).toList();
+      System.out.println("Odd values"+odd);
+      Map<Integer,String> even = studentList.stream()
+              .filter(i->(i.getId()%2==0)).collect(Collectors.toMap(Student::getId,Student::getName));
+      System.out.println("even values"+even);
+      List<String> nodup = studentList.stream().map(Student::getName).distinct().toList();
+      System.out.println("No Dup"+nodup);
+      Map<String,Long> freq = studentList.stream()
+              .collect(Collectors.groupingBy(Student::getName,Collectors.counting()));
+      System.out.println("fre---"+freq);
+      List<Student> reverse = studentList.stream().sorted(Comparator.comparingDouble(Student::getPercentage).reversed()).toList();
+      System.out.println("Reverse "+reverse);
+   }
 }
