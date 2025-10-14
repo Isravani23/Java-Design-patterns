@@ -1,0 +1,17 @@
+Singleton Pattern:
+The Singleton Pattern in Java is a creational design pattern ensuring that a class has only one instance
+and provides a global point of access to it. This is useful for coordinating actions across the system,
+such as configuration settings, connection pools, logging, and more.
+
+How Singleton Pattern Works
+Only one object of the class is ever created.
+A global access method returns the unique instance.
+Constructor is private so no other class can instantiate it.
+
+Real-World Use Cases
+Logging classes
+Configuration managers
+Database connection pools
+java.lang.Runtime#getRuntime()
+java.awt.Desktop#getDesktop()
+Singleton helps avoid memory waste and gives controlled access to shared resources.

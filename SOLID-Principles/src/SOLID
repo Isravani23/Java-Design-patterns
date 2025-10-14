@@ -1,0 +1,26 @@
+SingleResponsibilityPrinciple:
+Each class should have only one responsibility.
+For example, in an e-commerce app, separate OrderService, InvoiceService, and NotificationService rather than putting order processing,
+invoice generation, and email notification in one place.
+=======================================================
+OpenClosedPrinciple:
+Classes should be open for extension, closed for modification
+Design your classes to be extended—never directly modified for new requirements.
+Use interfaces and abstract classes so new functionalities can be added by creating new classes (e.g., adding new payment methods).
+In a real-world notification system, you could introduce more notifiers (EmailNotifier, SMSNotifier, PushNotifier) without altering the core NotificationService class.
+========================================================
+LiskovSubstitutionPrinciple:
+Subtypes must be substitutable for their base types.
+Ensure subclasses extend base classes properly, so objects of the parent class can be swapped with child implementations without breaking application logic.
+For example, in a payment system, any Payment subclass (CreditCardPayment, PayPalPayment) can be used wherever Payment is expected, without special-case logic.
+==========================================================
+InterfaceSegregationPrinciple:
+Don't force classes to implement methods they don't need! Split big interfaces into small, client-specific ones.
+Create small, focused interfaces, so classes depend only on the methods they actually use.
+In a shopping app, separate interfaces (AddToCart, Checkout, Wishlistable) allow each service to implement only what’s relevant,
+keeping classes lighter and easier to extend.
+===========================================================
+DependencyInversionPrinciple:
+Depend on abstractions—not concrete implementations
+Depend on abstractions (interfaces), not on concrete implementations. Use dependency injection frameworks (like Spring)
+to inject dependencies at runtime, enabling easy mocking and testing.

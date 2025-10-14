@@ -1,10 +1,11 @@
-import java.util.HashSet;
+import javaV8.ExampleStreams;
+import javaV8.SampleCoding;
 
 public class Main {
     public static void main(String[] args) {
         ExampleStreams st = new ExampleStreams();
         //st.selectOperation();
-        //ExampleCollectors.collectMethods();
-        SampleCoding.practice();
+        javaV8.ExampleCollectors.collectMethods();
+        //SampleCoding.practice();
     }
 }

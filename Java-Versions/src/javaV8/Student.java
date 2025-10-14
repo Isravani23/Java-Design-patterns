@@ -1,3 +1,5 @@
+package javaV8;
+
 public class Student {
     String name;
     int id;
@@ -45,7 +47,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "javaV8.Student{" +
                 "name='" + name + '\'' +
                 ", id=" + id +
                 ", subject='" + subject + '\'' +

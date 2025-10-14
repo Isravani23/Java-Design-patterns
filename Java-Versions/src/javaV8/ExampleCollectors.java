@@ -1,3 +1,5 @@
+package javaV8;
+
 import java.util.*;
 import java.util.stream.Collectors;  // For Collectors.toMap(), groupingBy(), etc.
 
@@ -18,7 +20,7 @@ public class ExampleCollectors {
       studentList.add(new Student("Vijay", 19, "Mathematics", 92.8));
       studentList.add(new Student("Harry", 20, "History", 71.9));
       //Top 3 performance
-      List<Student> top = studentList.stream().sorted(Comparator.comparingDouble(Student::getPercentage).reversed()).limit(3).toList();
+     List<Student> top = studentList.stream().sorted(Comparator.comparingDouble(Student::getPercentage).reversed()).limit(3).toList();
       System.out.println("Top 3 performance " + top);
       Set<String> sub = studentList.stream().map(Student::getSubject).collect(Collectors.toSet());
       System.out.println("Subjects " + sub);
@@ -47,7 +49,7 @@ public class ExampleCollectors {
       List<Integer> odd = studentList.stream().map(Student::getId).filter(i->(i%2!=0)).toList();
       System.out.println("Odd values"+odd);
       Map<Integer,String> even = studentList.stream()
-              .filter(i->(i.getId()%2==0)).collect(Collectors.toMap(Student::getId,Student::getName));
+              .filter(i->(i.getId()%2==0)).collect(Collectors.toMap(Student::getId, Student::getName));
       System.out.println("even values"+even);
       List<String> nodup = studentList.stream().map(Student::getName).distinct().toList();
       System.out.println("No Dup"+nodup);
@@ -56,5 +58,6 @@ public class ExampleCollectors {
       System.out.println("fre---"+freq);
       List<Student> reverse = studentList.stream().sorted(Comparator.comparingDouble(Student::getPercentage).reversed()).toList();
       System.out.println("Reverse "+reverse);
+
    }
 }
